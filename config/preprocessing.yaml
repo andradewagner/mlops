@@ -1,0 +1,105 @@
+preprocessing:
+  output_dir: "data/features"
+  output_filename: "house_price_features.parquet"
+  compression: "snappy"
+
+imputation:
+  - column: "total_bedrooms"
+    strategy: "median"
+    groupby: "ocean_proximity"
+
+binary_flags:
+  - column: "housing_median_age"
+    value: 52
+    new_column: "age_at_cap"
+
+ratio_features:
+  - name: "rooms_per_household"
+    numerator: "total_rooms"
+    denominator: "households"
+  - name: "bedrooms_per_room"
+    numerator: "total_bedrooms"
+    denominator: "total_rooms"
+  - name: "population_per_household"
+    numerator: "population"
+    denominator: "households"
+
+log_transformer:
+  columns:
+    - "total_rooms"
+    - "total_bedrooms"
+    - "population"
+    - "households"
+    - "median_income"
+    - "rooms_per_household"
+    - "population_per_household"
+
+geo_distance:
+  lat_col: "latitude"
+  lon_col: "longitude"
+  nearest_city_column: "nearest_city_distance"
+  cities:
+    - name: "san_francisco"
+      lat: 37.7749
+      lon: -122.4194
+    - name: "los_angeles"
+      lat: 34.0522
+      lon: -118.2437
+    - name: "san_jose"
+      lat: 37.3382
+      lon: -121.8863
+    - name: "san_diego"
+      lat: 32.7157
+      lon: -117.1611
+    - name: "sacramento"
+      lat: 38.5816
+      lon: -121.4944
+
+polynomial_features:
+  - name: "median_income_squared"
+    columns: ["median_income"]
+  - name: "housing_median_age_squared"
+    columns: ["housing_median_age"]
+  - name: "median_income_x_housing_median_age"
+    columns: ["median_income", "housing_median_age"]
+
+categorical_encoding:
+  column: "ocean_proximity"
+  ordinal_columns: "ocean_proximity_encoded"
+  ordinal_map:
+    "ISLAND": 0
+    "NEAR BAY": 1
+    "NEAR OCEAN": 2
+    "<1H OCEAN": 3
+    "INLAND": 4
+  one_hot_prefix: "op"
+  drop_first: false
+
+feature_selection:
+  target: "median_house_value"
+  features_to_keep:
+    - "median_income"
+    - "log_median_income"
+    - "latitude"
+    - "longitude"
+    - "ocean_proximity_encoded"
+    - "op_ISLAND"
+    - "op_NEAR BAY"
+    - "op_NEAR OCEAN"
+    - "op_<1H OCEAN"
+    - "op_INLAND"
+    - "nearest_city_distance"
+    - "dist_san_francisco"
+    - "dist_los_angeles"
+    - "dist_san_jose"
+    - "dist_san_diego"
+    - "dist_sacramento"
+    - "bedrooms_per_room"
+    - "rooms_per_household"
+    - "population_per_household"
+    - "log_rooms_per_household"
+    - "housing_median_age"
+    - "age_at_cap"
+    - "median_income_squared"
+    - "housing_median_age_squared"
+    - "median_income_x_housing_median_age"

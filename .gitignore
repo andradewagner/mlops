@@ -1,0 +1,5 @@
+./secrets.env
+aula02_env/
+mlflow.db
+mlflow.db.backup
+mlruns/

@@ -1,0 +1,361 @@
+pipeline:
+  imputation:
+    - column: "bedrooms_per_room"
+      strategy: "group_median"
+      group_by: "ocean_proximity_encoded"
+  scaling:
+    columns:
+      - "median_income"
+      - "log_median_income"
+      - "housing_median_age"
+      - "latitude"
+      - "longitude"
+      - "nearest_city_distance"
+      - "dist_san_francisco"
+      - "dist_los_angeles"
+      - "dist_san_jose"
+      - "dist_san_diego"
+      - "dist_sacramento"
+      - "bedrooms_per_room"
+      - "rooms_per_household"
+      - "population_per_household"
+      - "log_rooms_per_household"
+      - "log_population_per_household"
+      - "median_income_squared"
+      - "housing_median_age_squared"
+      - "median_income_x_housing_median_age"
+
+feature_reduction:
+  method: "none" # none, rfe, pca, kpca
+
+  search_space:
+    method:
+      type: "categorical"
+      choices: ["none", "rfe", "pca"] # "kpca" estourou o tempo do Optuna e travou
+
+  rfe:
+    n_features_to_select: 15
+    rfe_estimator: "ridge"
+    search_space:
+      n_features_to_select:
+        type: "int"
+        low: 5
+        high: 25
+  pca:
+    n_components: 15
+    search_space:
+      n_components:
+        type: "int"
+        low: 5
+        high: 25
+
+  kpca:
+    n_components: 15
+    kernel: "rbf"
+    gamma: null
+    degree: 3
+    coef0: 1.0
+    search_space:
+      n_components:
+        type: "int"
+        low: 5
+        high: 25
+      kernel:
+        type: "categorical"
+        choices: ["rbf", "poly", "cosine"]
+      gamma:
+        type: "log_float"
+        low: 1.0e-4
+        high: 10.0
+      degree:
+        type: "int"
+        low: 2
+        high: 5
+      coef0:
+        type: "float"
+        low: 0.0
+        high: 1.0
+
+modeling:
+  experiment_name: "california-housing_experiments"
+  tracking_uri: "sqlite:////home/wagner/MLOps/mlflow.db" # Caminho local (sqlite://mlruns.db para producao)
+  random_seed: 10
+
+holdout:
+  test_size: 0.2
+  stratify_bins: 10
+
+cv:
+  strategy: "kfold"
+  n_splits: 3
+  shuffle: true
+
+optuna:
+  default_trials: 3
+
+metrics:
+  primary: "rmse"
+  additional:
+    - "mae"
+    - "r2"
+    - "mape"
+
+models:
+  # Lineares
+  linear_regression:
+    enabled: true
+    module: "sklearn.linear_model"
+    class: "LinearRegression"
+    default_params: {}                # sem search_space -> apenas baseline
+
+  ridge:
+    enabled: true
+    module: "sklearn.linear_model"
+    class: "Ridge"
+    default_params:
+      alpha: 1.0
+    search_space:
+      alpha:
+        type: "log_float"
+        low: 1.0e-4
+        high: 1.0e4
+
+  lasso:
+    enabled: false
+    module: "sklearn.linear_model"
+    class: "Lasso"
+    default_params:
+      alpha: 0.01
+      max_iter: 5000
+    search_space:
+      alpha:
+        type: "log_float"
+        low: 1.0e-5
+        high: 10.0
+
+  decision_tree:
+    enabled: true
+    module: "sklearn.tree"
+    class: "DecisionTreeRegressor"
+    default_params:
+      random_state: 42
+    search_space:
+      max_depth:
+        type: "int"
+        low: 3
+        high: 20
+      min_samples_split:
+        type: "int"
+        low: 2
+        high: 50
+      min_samples_leaf:
+        type: "int"
+        low: 1
+        high: 20
+      max_features:
+        type: "categorical"
+        choices: ["sqrt", "log2"]
+
+  knn:
+    enabled: true
+    module: "sklearn.neighbors"
+    class: "KNeighborsRegressor"
+    default_params:
+      n_neighbors: 5
+      n_jobs: -1
+    search_space:
+      n_neighbors:
+        type: "int"
+        low: 3
+        high: 30
+      weights:
+        type: "categorical"
+        choices: ["uniform", "distance"]
+      metric:
+        type: "categorical"
+        choices: ["euclidean", "manhattan", "minkowski"]
+      leaf_size:
+        type: "int"
+        low: 10
+        high: 60
+
+  svr:
+    enabled: false
+    module: "sklearn.svm"
+    class: "SVR"
+    default_params:
+      kernel: "rbf"
+      C: 1.0
+      epsilon: 0.1
+    max_samples_for_tuning: 5000   # subsample p/ velocidade nos trials
+    search_space:
+      kernel:
+        type: "categorical"
+        choices: ["rbf", "poly", "linear"]
+      C:
+        type: "log_float"
+        low: 0.1
+        high: 1000.0
+      epsilon:
+        type: "log_float"
+        low: 0.01
+        high: 10.0
+      gamma:
+        type: "categorical"
+        choices: ["scale", "auto"]   # só usado por rbf e poly
+
+  random_forest:
+    enabled: true
+    module: "sklearn.ensemble"
+    class: "RandomForestRegressor"
+    default_params:
+      n_estimators: 100
+      random_state: 42
+      n_jobs: -1
+    search_space:
+      n_estimators:
+        type: "int"
+        low: 50
+        high: 400
+      max_depth:
+        type: "int"
+        low: 5
+        high: 30
+      min_samples_split:
+        type: "int"
+        low: 2
+        high: 20
+      max_features:
+        type: "float"
+        low: 0.2
+        high: 1.0
+
+  gradient_boosting:
+    enabled: true
+    module: "sklearn.ensemble"
+    class: "GradientBoostingRegressor"
+    default_params:
+      n_estimators: 30
+      random_state: 42
+    search_space:
+      n_estimators:
+        type: "int"
+        low: 50
+        high: 400
+      max_depth:
+        type: "int"
+        low: 2
+        high: 8
+      learning_rate:
+        type: "log_float"
+        low: 0.01
+        high: 0.5
+      subsample:
+        type: "float"
+        low: 0.5
+        high: 1.0
+      min_samples_split:
+        type: "int"
+        low: 2
+        high: 20
+
+  xgboost:
+    enabled: true
+    module: "xgboost"
+    class: "XGBRegressor"
+    default_params:
+      n_estimators: 50
+      random_state: 42
+      verbosity: 0
+      n_jobs: -1
+    search_space:
+      n_estimators:
+        type: "int"
+        low: 50
+        high: 500
+      max_depth:
+        type: "int"
+        low: 3
+        high: 10
+      learning_rate:
+        type: "log_float"
+        low: 0.01
+        high: 0.5
+      subsample:
+        type: "float"
+        low: 0.5
+        high: 1.0
+      colsample_bytree:
+        type: "float"
+        low: 0.4
+        high: 1.0
+      reg_alpha:
+        type: "log_float"
+        low: 1.0e-5
+        high: 10.0
+
+  lightgbm:
+    enabled: true
+    module: "lightgbm"
+    class: "LGBMRegressor"
+    default_params:
+      n_estimators: 100
+      random_state: 42
+      verbosity: -1
+      n_jobs: -1
+    search_space:
+      n_estimators:
+        type: "int"
+        low: 50
+        high: 500
+      num_leaves:
+        type: "int"
+        low: 20
+        high: 200
+      learning_rate:
+        type: "log_float"
+        low: 0.01
+        high: 0.5
+      subsample:
+        type: "float"
+        low: 0.5
+        high: 1.0
+      reg_alpha:
+        type: "log_float"
+        low: 1.0e-5
+        high: 10.0
+      colsample_bytree:
+        type: "float"
+        low: 0.4
+        high: 1.0
+
+ensembles:
+  top_n_base_models: 3
+
+  stacking:
+    enabled: false
+    inner_cv_folds: 3
+    meta_learner_search_space:
+      meta_alpha:
+        type: "log_float"
+        low: 1.0e-4
+        high: 1.0e4
+  voting:
+    enabled: false
+    weight_low: 1
+    weight_high: 10
+
+# Artefatos
+# Todos os plots são salvos em output_dir e logados no MLFlow como artefatos.
+artifacts:
+  output_dir: "outputs/modeling"
+  save_plots: true
+  plots:
+    - "residuals"                  # resíduos vs valores ajustados
+    - "predicted_vs_actual"        # previstos vs reais (com linha ideal)
+    - "error_distribution"         # histograma + CDF dos resíduos
+    - "feature_importance"         # top 20 features
+    - "cv_fold_comparison"         # RMSE por fold (robustez)
+    - "learning_curve"             # viés-variância (tamanho do treino vs erro)
+    - "optuna_optimization_history" # evolução do objetivo por trial
+    - "optuna_param_importances"    # importância dos hiperparâmetros no Optuna
