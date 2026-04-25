@@ -8,10 +8,14 @@ class CustomImputer(BaseEstimator, TransformerMixin):
             self,
             group_col: str,
             target_col: str,
+            strategy: str,
+            fill_value: int,
             logger: Any = None
     ) -> None:
         self.group_col = group_col
         self.target_col = target_col
+        self.strategy = strategy
+        self.fill_value = fill_value
         self.logger = logger
 
     def _log(self, msg: str, *args: Any) -> None:
@@ -21,47 +25,57 @@ class CustomImputer(BaseEstimator, TransformerMixin):
             print(msg, *args)
 
     def fit(self, X: pd.DataFrame, y: Any = None) -> "CustomImputer":
-        self._log("Fitting imputer for column '%s' grouped by '%s'", self.target_col, self.group_col)
-        
-        missing_cols = [c for c in [self.group_col, self.target_col] if c not in X.columns]
-        if missing_cols:
-            raise KeyError(f"Columns {missing_cols} not found in input DataFrame")
+        if self.strategy == "constant":
+            # Não precisa calcular nada
+            self._log("Using constant fill_value=%s for '%s'", self.fill_value, self.target_col)
+            return self
 
-        self.medians_ = (
-            X.groupby(self.group_col)[self.target_col]
-             .median()
-             .to_dict()
-        )
-        self.global_median_ = X[self.target_col].median()
-        self.impute_values_ = X[self.group_col].map(self.medians_).fillna(self.global_median_)
-        self._log("Computed group medians: %s", self.medians_)
-        self._log("Computed global median: %s", self.global_median_)
+        if self.group_col and self.group_col not in X.columns:
+            raise KeyError(f"Group column '{self.group_col}' not found")
+
+        if self.target_col not in X.columns:
+            raise KeyError(f"Target column '{self.target_col}' not found")
+
+        if self.strategy == "median":
+            if self.group_col:
+                self.medians_ = X.groupby(self.group_col)[self.target_col].median().to_dict()
+                self.global_value_ = X[self.target_col].median()
+            else:
+                self.global_value_ = X[self.target_col].median()
+
+        elif self.strategy == "mean":
+            if self.group_col:
+                self.medians_ = X.groupby(self.group_col)[self.target_col].mean().to_dict()
+                self.global_value_ = X[self.target_col].mean()
+            else:
+                self.global_value_ = X[self.target_col].mean()
+
+        elif self.strategy == "most_frequent":
+            self.global_value_ = X[self.target_col].mode()[0]
+
+        else:
+            raise ValueError(f"Unknown strategy '{self.strategy}'")
+
         return self
 
     def transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
-
-        if not hasattr(self, "medians_"):
-            raise RuntimeError("The imputer has not been fitted yet. Please call 'fit' before 'transform'.")
-        
         X = X.copy()
-        n_before = int(X[self.target_col].isna().sum())
-        self._log("Imputing missing values in column '%s'", self.target_col)
 
-        def _fill(row: pd.Series) -> float:
-            if pd.isna(row[self.target_col]):
-                group_value = row[self.group_col]
-                impute_value = self.medians_.get(group_value, self.global_median_)
-                self._log(f"Imputing missing value for group {group_value} with value {impute_value}")
-                return impute_value
-            else:
-                return row[self.target_col]
-        
-        X[self.target_col] = X.apply(_fill, axis=1)
-        
-        n_after = int(X[self.target_col].isna().sum())
-        
-        self._log(f"Imputation complete. Missing values before: {n_before}, after: {n_after}")
-        
+        if self.strategy == "constant":
+            X[self.target_col] = X[self.target_col].fillna(self.fill_value)
+            return X
+
+        # Estratégias baseadas em estatísticas
+        if self.group_col:
+            X[self.target_col] = X.apply(
+                lambda row: self.medians_.get(row[self.group_col], self.global_value_)
+                if pd.isna(row[self.target_col])
+                else row[self.target_col],
+                axis=1
+            )
+        else:
+            X[self.target_col] = X[self.target_col].fillna(self.global_value_)
+
         return X
     
 class BinaryFlagTransformer(BaseEstimator, TransformerMixin):

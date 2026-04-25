@@ -1,12 +1,14 @@
-pipline:
-  name: "house-price-data-pipeline"
+pipeline:
+  name: "kingcounty-price-data-pipeline"
   version: "1.0.0"
-  description: "Pipeline for processing house price data"
+  description: "Pipeline completo para ingestão, preprocessamento, qualidade e modelagem do dataset King County House Prices"
 
 paths:
   raw_data_dir: "data/raw/"
   processed_data_dir: "data/processed/"
-  output_filename: "house_price_predictions.parquet"
+  features_data_dir: "data/features/"
+  output_filename: "kingcountry_price_predictions.parquet"
+  features_filename: "kingcounty_features.parquet"
 
 execution:
   skip_existing: true
@@ -15,10 +17,54 @@ execution:
   force_ingest: false
 
 logging:
-  name: IngestaoLogger
-  level: INFO
+  name: "PipelineLogger"
+  level: "INFO"
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
   datefmt: "%Y-%m-%d %H:%M:%S"
   log_to_file: true
-  log_dir: logs
-  log_file: pipeline.log
+  log_dir: "logs"
+  log_file: "pipeline.log"
+
+kaggle:
+  dataset: "harlfoxem/housesalesprediction"
+  file_pattern: "*.csv"
+  expected_files:
+    - "kc_house_data.csv"
+
+ingest:
+  output_format: "parquet"
+  compression: "snappy"
+  chunk_size_rows: 50000
+  convert_dtypes: true
+  validate_schema: true
+
+schema:
+  required_columns:
+    - id
+    - date
+    - price
+    - bedrooms
+    - bathrooms
+    - sqft_living
+    - sqft_lot
+    - floors
+    - waterfront
+    - view
+    - condition
+    - grade
+    - sqft_above
+    - sqft_basement
+    - yr_built
+    - yr_renovated
+    - zipcode
+    - lat
+    - long
+    - sqft_living15
+    - sqft_lot15
+feature_selection:
+  target: "price"
+  
+quality:
+  suite_name: "kingcounty-data-quality-suite"
+  fail_pipeline_on_failure: false
+  output_dir: "data/quality/"

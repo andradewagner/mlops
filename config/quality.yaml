@@ -1,113 +1,141 @@
 quality:
-  suite_name: "house-price-data-quality-suite"
+  suite_name: "kingcounty-data-quality-suite"
   fail_pipeline_on_failure: False
   output_dir: "data/quality/"
+
 table_expectations:
   - type: "expect_table_row_count_to_be_between"
     kwargs:
-      min_value: 20000
-      max_value: 21000  
+      min_value: 21000
+      max_value: 22000
+
   - type: "expect_table_columns_to_match_set"
     kwargs:
       column_set:
-        - "median_house_value"
-        - "median_income"
-        - "housing_median_age"
-        - "total_rooms"
-        - "total_bedrooms"
-        - "population"
-        - "households"
-        - "longitude"
-        - "latitude"
-        - "ocean_proximity"
+        - "id"
+        - "date"
+        - "price"
+        - "bedrooms"
+        - "bathrooms"
+        - "sqft_living"
+        - "sqft_lot"
+        - "floors"
+        - "waterfront"
+        - "view"
+        - "condition"
+        - "grade"
+        - "sqft_above"
+        - "sqft_basement"
+        - "yr_built"
+        - "yr_renovated"
+        - "zipcode"
+        - "lat"
+        - "long"
+        - "sqft_living15"
+        - "sqft_lot15"
       exact_match: true
+
 column_expectations:
-  median_house_value:
+
+  price:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 50000
+        max_value: 8000000
+    - type: "expect_column_values_to_not_be_null"
+      kwargs:
+        mostly: 0.999
+
+  bedrooms:
     - type: "expect_column_values_to_be_between"
       kwargs:
         min_value: 0
-        max_value: 600000
+        max_value: 10
     - type: "expect_column_values_to_not_be_null"
       kwargs:
-        mostly: 0.99
-    - type: "expect_column_mean_to_be_between"
-      kwargs:
-        min_value: 150000
-        max_value: 270000
-  median_income:
+        mostly: 0.999
+
+  bathrooms:
     - type: "expect_column_values_to_be_between"
       kwargs:
         min_value: 0
-        max_value: 150000
+        max_value: 8
     - type: "expect_column_values_to_not_be_null"
       kwargs:
-        mostly: 0.99
-  housing_median_age:
+        mostly: 0.999
+
+  sqft_living:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 200
+        max_value: 15000
+    - type: "expect_column_values_to_not_be_null"
+      kwargs:
+        mostly: 0.999
+
+  sqft_lot:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 400
+        max_value: 1000000
+    - type: "expect_column_values_to_not_be_null"
+      kwargs:
+        mostly: 0.999
+
+  floors:
     - type: "expect_column_values_to_be_between"
       kwargs:
         min_value: 1
-        max_value: 60
-    - type: "expect_column_values_to_not_be_null"
-      kwargs:
-        mostly: 0.99
-  total_rooms:
-    - type: "expect_column_values_to_be_between"
-      kwargs:
-        min_value: 1
-        max_value: null # no upper limit
-    - type: "expect_column_values_to_not_be_null"
-      kwargs:
-        mostly: 0.99
-  total_bedrooms:
-    - type: "expect_column_values_to_be_between"
-      kwargs:
-        min_value: 1
-        max_value: null # no upper limit
-    - type: "expect_column_values_to_not_be_null"
-      kwargs:
-        mostly: 0.98
-  population:
-    - type: "expect_column_values_to_be_between"
-      kwargs:
-        min_value: 1
-        max_value: null # no upper limit
-    - type: "expect_column_values_to_not_be_null"
-      kwargs:
-        mostly: 0.99
-  households:
-    - type: "expect_column_values_to_be_between"
-      kwargs:
-        min_value: 1
-        max_value: null # no upper limit
-    - type: "expect_column_values_to_not_be_null"
-      kwargs:
-        mostly: 0.99
-  longitude:
-    - type: "expect_column_values_to_be_between"
-      kwargs:
-        min_value: -180
-        max_value: 180
-    - type: "expect_column_values_to_not_be_null"
-      kwargs:
-        mostly: 0.99
-  latitude:
-    - type: "expect_column_values_to_be_between"
-      kwargs:
-        min_value: -90
-        max_value: 90
-    - type: "expect_column_values_to_not_be_null"
-      kwargs:
-        mostly: 0.99
-  ocean_proximity:
+        max_value: 4
+
+  waterfront:
     - type: "expect_column_values_to_be_in_set"
       kwargs:
-        value_set:
-          - "NEAR OCEAN"
-          - "INLAND"
-          - "NEAR BAY"
-          - "ISLAND"
-          - "BACK INLAND"
-          - "<1H OCEAN"
+        value_set: [0, 1]
+
+  view:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 0
+        max_value: 4
+
+  condition:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 1
+        max_value: 5
+
+  grade:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 1
+        max_value: 13
+
+  yr_built:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 1900
+        max_value: 2020
+
+  yr_renovated:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 0
+        max_value: 2020
+
+  zipcode:
     - type: "expect_column_values_to_not_be_null"
       kwargs:
-        mostly: 0.99
+        mostly: 0.999
+
+  lat:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: 47.0
+        max_value: 48.0
+
+  long:
+    - type: "expect_column_values_to_be_between"
+      kwargs:
+        min_value: -123.0
+        max_value: -121.0

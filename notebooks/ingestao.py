@@ -97,7 +97,7 @@ for f in sorted(raw_data_dir.glob("*.csv")):
 processed_data_dir = ROOT_DIR / pipeline_cfg.get('data', {}).get('processed_data_dir', 'data/processed')
 processed_data_dir.mkdir(parents=True, exist_ok=True)
 output_path = processed_data_dir / pipeline_cfg.get('data', {}).get('output_filename',
-                                                                    'house_price_predictions.parquet'
+                                                                    'kingcountry_price_predictions.parquet'
                                                                     )
 logger.info(f"Output path for processed data: {output_path}")
 

@@ -1,105 +1,121 @@
 preprocessing:
   output_dir: "data/features"
-  output_filename: "house_price_features.parquet"
+  output_filename: "kingcounty_features.parquet"
   compression: "snappy"
 
+# -----------------------------
+# IMPUTAÇÃO
+# -----------------------------
+# O dataset King County NÃO tem "total_bedrooms" nem "ocean_proximity".
+# Mas tem valores 0 em "sqft_basement" e "yr_renovated".
+# Vamos imputar "yr_renovated" = 0 como "não renovado".
+
 imputation:
-  - column: "total_bedrooms"
-    strategy: "median"
-    groupby: "ocean_proximity"
+  - column: "yr_renovated"
+    strategy: "constant"
+    fill_value: 0
+    group_by: "zipcode"
 
+# -----------------------------
+# BINARY FLAGS
+# -----------------------------
+# Criar flag para casas muito antigas
 binary_flags:
-  - column: "housing_median_age"
-    value: 52
-    new_column: "age_at_cap"
+  - column: "yr_built"
+    value: 1950
+    new_column: "built_before_1950"
 
+# -----------------------------
+# RATIO FEATURES
+# -----------------------------
 ratio_features:
-  - name: "rooms_per_household"
-    numerator: "total_rooms"
-    denominator: "households"
-  - name: "bedrooms_per_room"
-    numerator: "total_bedrooms"
-    denominator: "total_rooms"
-  - name: "population_per_household"
-    numerator: "population"
-    denominator: "households"
+  - name: "bath_per_bed"
+    numerator: "bathrooms"
+    denominator: "bedrooms"
 
+  - name: "sqft_living_per_room"
+    numerator: "sqft_living"
+    denominator: "bedrooms"
+
+  - name: "lot_per_sqft"
+    numerator: "sqft_lot"
+    denominator: "sqft_living"
+
+# -----------------------------
+# LOG TRANSFORM
+# -----------------------------
 log_transformer:
   columns:
-    - "total_rooms"
-    - "total_bedrooms"
-    - "population"
-    - "households"
-    - "median_income"
-    - "rooms_per_household"
-    - "population_per_household"
+    - "sqft_living"
+    - "sqft_lot"
+    - "sqft_above"
+    - "sqft_basement"
+    - "price"
 
+# -----------------------------
+# GEO DISTANCE
+# -----------------------------
+# Agora usando cidades próximas de Seattle
 geo_distance:
-  lat_col: "latitude"
-  lon_col: "longitude"
+  lat_col: "lat"
+  lon_col: "long"
   nearest_city_column: "nearest_city_distance"
   cities:
-    - name: "san_francisco"
-      lat: 37.7749
-      lon: -122.4194
-    - name: "los_angeles"
-      lat: 34.0522
-      lon: -118.2437
-    - name: "san_jose"
-      lat: 37.3382
-      lon: -121.8863
-    - name: "san_diego"
-      lat: 32.7157
-      lon: -117.1611
-    - name: "sacramento"
-      lat: 38.5816
-      lon: -121.4944
+    - name: "seattle"
+      lat: 47.6062
+      lon: -122.3321
+    - name: "bellevue"
+      lat: 47.6101
+      lon: -122.2015
+    - name: "redmond"
+      lat: 47.673988
+      lon: -122.121513
+    - name: "tacoma"
+      lat: 47.2529
+      lon: -122.4443
+    - name: "everett"
+      lat: 47.978984
+      lon: -122.202079
 
+# Aplicando funçao polinomial pela relaçao nao linear do tamanho x preco
 polynomial_features:
-  - name: "median_income_squared"
-    columns: ["median_income"]
-  - name: "housing_median_age_squared"
-    columns: ["housing_median_age"]
-  - name: "median_income_x_housing_median_age"
-    columns: ["median_income", "housing_median_age"]
+  - name: "sqft_living_squared"
+    columns: ["sqft_living"]
+  # Analisando a relacao quantidade de banheiro x quantidade de quartos
+  - name: "bath_x_bed"
+    columns: ["bathrooms", "bedrooms"]
 
+# Usando "zipcode" com one-hot para categorizar os imóveis pela regiao.
 categorical_encoding:
-  column: "ocean_proximity"
-  ordinal_columns: "ocean_proximity_encoded"
-  ordinal_map:
-    "ISLAND": 0
-    "NEAR BAY": 1
-    "NEAR OCEAN": 2
-    "<1H OCEAN": 3
-    "INLAND": 4
-  one_hot_prefix: "op"
+  column: "zipcode"
+  one_hot_prefix: "zip"
   drop_first: false
 
+# -----------------------------
+# FEATURE SELECTION
+# -----------------------------
 feature_selection:
-  target: "median_house_value"
+  target: "price"
   features_to_keep:
-    - "median_income"
-    - "log_median_income"
-    - "latitude"
-    - "longitude"
-    - "ocean_proximity_encoded"
-    - "op_ISLAND"
-    - "op_NEAR BAY"
-    - "op_NEAR OCEAN"
-    - "op_<1H OCEAN"
-    - "op_INLAND"
+    - "sqft_living"
+    - "sqft_lot"
+    - "sqft_above"
+    - "sqft_basement"
+    - "bathrooms"
+    - "bedrooms"
+    - "floors"
+    - "waterfront"
+    - "view"
+    - "condition"
+    - "grade"
+    - "yr_built"
+    - "yr_renovated"
+    - "lat"
+    - "long"
+    - "built_before_1950"
+    - "bath_per_bed"
+    - "sqft_living_per_room"
+    - "lot_per_sqft"
     - "nearest_city_distance"
-    - "dist_san_francisco"
-    - "dist_los_angeles"
-    - "dist_san_jose"
-    - "dist_san_diego"
-    - "dist_sacramento"
-    - "bedrooms_per_room"
-    - "rooms_per_household"
-    - "population_per_household"
-    - "log_rooms_per_household"
-    - "housing_median_age"
-    - "age_at_cap"
-    - "median_income_squared"
-    - "housing_median_age_squared"
-    - "median_income_x_housing_median_age"
+    - "sqft_living_squared"
+    - "bath_x_bed"
