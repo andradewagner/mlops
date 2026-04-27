@@ -2803,3 +2803,573 @@ sqft_lot15: int64
 2026-04-25 16:53:38 - QualityReportSaver - INFO - Detailed quality report saved to /home/wagner/MLOps/outputs/quality/quality_report_20260425_165338.json
 2026-04-25 16:53:38 - PipelineLogger - WARNING - Quality checks failed. 2/22 checks failed. Report saved at: /home/wagner/MLOps/outputs/quality/quality_report_20260425_165338.json
 2026-04-25 16:53:38 - PipelineLogger - INFO - Quality report saved at: /home/wagner/MLOps/outputs/quality/quality_report_20260425_165338.json
+2026-04-27 12:32:31 - PipelineLogger - INFO - Kaggle credentials are valid. Proceeding with data ingestion.
+2026-04-27 12:32:31 - PipelineLogger - INFO - Dataset to be downloaded: harlfoxem/housesalesprediction
+2026-04-27 12:32:31 - PipelineLogger - INFO - Expected files: ['kc_house_data.csv']
+2026-04-27 12:32:31 - PipelineLogger - INFO - File pattern: *.csv
+2026-04-27 12:32:31 - PipelineLogger - INFO - Dataset: harlfoxem/housesalesprediction
+2026-04-27 12:32:31 - PipelineLogger - INFO - Downloading file 'kc_house_data.csv' from dataset 'harlfoxem/housesalesprediction'...
+2026-04-27 12:32:33 - PipelineLogger - INFO - ZIP encontrado: /home/wagner/MLOps/data/raw/kc_house_data.csv.zip
+2026-04-27 12:32:33 - PipelineLogger - INFO - Unzipping file '/home/wagner/MLOps/data/raw/kc_house_data.csv.zip' to '/home/wagner/MLOps/data/raw'...
+2026-04-27 12:32:33 - PipelineLogger - INFO - File '/home/wagner/MLOps/data/raw/kc_house_data.csv.zip' unzipped successfully.
+2026-04-27 12:32:33 - PipelineLogger - INFO - kc_house_data.csv (2456.3 KB)
+2026-04-27 12:32:33 - PipelineLogger - INFO - Output path for processed data: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:32:33 - PipelineLogger - INFO - Compression method for Parquet output: snappy
+2026-04-27 12:32:33 - PipelineLogger - INFO - Chunk size for processing: 100000
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validation enabled: True
+2026-04-27 12:32:33 - PipelineLogger - INFO - Required columns for validation: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:32:33 - PipelineLogger - INFO - Skip ingestion if output file exists: True
+2026-04-27 12:32:33 - PipelineLogger - INFO - Force ingestion even if output file exists: False
+2026-04-27 12:32:33 - PipelineLogger - INFO - Found 1 CSV files to ingest from '/home/wagner/MLOps/data/raw'.
+2026-04-27 12:32:33 - PipelineLogger - INFO - File Info: kc_house_data.csv (2.4 MB)
+2026-04-27 12:32:33 - PipelineLogger - INFO - Starting ingestion of CSV files to Parquet with compression='snappy', chunk_size=100000, validate_schema=True, required_columns=['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:32:33 - PipelineLogger - INFO - Processing file '/home/wagner/MLOps/data/raw/kc_house_data.csv'...
+2026-04-27 12:32:33 - PipelineLogger - INFO - Schema for file '/home/wagner/MLOps/data/raw/kc_house_data.csv': id: int64
+date: string
+price: double
+bedrooms: int64
+bathrooms: double
+sqft_living: int64
+sqft_lot: int64
+floors: double
+waterfront: int64
+view: int64
+condition: int64
+grade: int64
+sqft_above: int64
+sqft_basement: int64
+yr_built: int64
+yr_renovated: int64
+zipcode: int64
+lat: double
+long: double
+sqft_living15: int64
+sqft_lot15: int64
+2026-04-27 12:32:33 - PipelineLogger - INFO - Initialized Parquet writer with schema: id: int64
+date: string
+price: double
+bedrooms: int64
+bathrooms: double
+sqft_living: int64
+sqft_lot: int64
+floors: double
+waterfront: int64
+view: int64
+condition: int64
+grade: int64
+sqft_above: int64
+sqft_basement: int64
+yr_built: int64
+yr_renovated: int64
+zipcode: int64
+lat: double
+long: double
+sqft_living15: int64
+sqft_lot15: int64
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 856 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 861 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 857 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 861 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 862 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 862 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Read batch with 131 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:32:33 - PipelineLogger - INFO - Finished processing '/home/wagner/MLOps/data/raw/kc_house_data.csv'. Total rows so far: 21613
+2026-04-27 12:32:33 - PipelineLogger - INFO - Closing Parquet writer.
+2026-04-27 12:32:33 - PipelineLogger - INFO - Validating presence of required columns in output Parquet file '/home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet'...
+2026-04-27 12:32:33 - PipelineLogger - INFO - All 21 required columns are present in the output Parquet file: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:32:33 - PipelineLogger - INFO - Ingestion completed in 0.18 seconds. Input size is: 2.3986873626708984. Output size is: 1.15 MB. Compression ratio: 2.09
+2026-04-27 12:32:33 - PipelineLogger - INFO - Ingestion completed. Output file: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:34:23 - PipelineLogger - INFO - Logger configured successfully for quality checks.
+2026-04-27 12:34:23 - PipelineLogger - INFO - Starting quality checks with the following configuration:
+2026-04-27 12:34:23 - PipelineLogger - INFO - pipeline: {'name': 'kingcounty-price-data-pipeline', 'version': '1.0.0', 'description': 'Pipeline completo para ingestão, preprocessamento, qualidade e modelagem do dataset King County House Prices'}
+2026-04-27 12:34:23 - PipelineLogger - INFO - paths: {'raw_data_dir': 'data/raw/', 'processed_data_dir': 'data/processed/', 'features_data_dir': 'data/features/', 'output_filename': 'kingcountry_price_predictions.parquet', 'features_filename': 'kingcounty_features.parquet'}
+2026-04-27 12:34:23 - PipelineLogger - INFO - execution: {'skip_existing': True, 'skip_ingest_if_exists': True, 'force_download': False, 'force_ingest': False}
+2026-04-27 12:34:23 - PipelineLogger - INFO - logging: {'name': 'PipelineLogger', 'level': 'INFO', 'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s', 'datefmt': '%Y-%m-%d %H:%M:%S', 'log_to_file': True, 'log_dir': 'logs', 'log_file': 'pipeline.log'}
+2026-04-27 12:34:23 - PipelineLogger - INFO - kaggle: {'dataset': 'harlfoxem/housesalesprediction', 'file_pattern': '*.csv', 'expected_files': ['kc_house_data.csv'], 'expected_count': None}
+2026-04-27 12:34:23 - PipelineLogger - INFO - ingest: {'output_format': 'parquet', 'compression': 'snappy', 'chunk_size_rows': 50000, 'convert_dtypes': True, 'validate_schema': True}
+2026-04-27 12:34:23 - PipelineLogger - INFO - schema: {'required_columns': ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']}
+2026-04-27 12:34:23 - PipelineLogger - INFO - feature_selection: {'target': 'price'}
+2026-04-27 12:34:23 - PipelineLogger - INFO - quality: {'suite_name': 'kingcounty-data-quality-suite', 'fail_pipeline_on_failure': False, 'output_dir': 'data/quality/'}
+2026-04-27 12:34:23 - PipelineLogger - INFO - table_expectations: [{'type': 'expect_table_row_count_to_be_between', 'kwargs': {'min_value': 21000, 'max_value': 22000}}, {'type': 'expect_table_columns_to_match_set', 'kwargs': {'column_set': ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15'], 'exact_match': True}}]
+2026-04-27 12:34:23 - PipelineLogger - INFO - column_expectations: {'price': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 50000, 'max_value': 8000000}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'bedrooms': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 0, 'max_value': 10}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'bathrooms': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 0, 'max_value': 8}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'sqft_living': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 200, 'max_value': 15000}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'sqft_lot': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 400, 'max_value': 1000000}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'floors': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 1, 'max_value': 4}}], 'waterfront': [{'type': 'expect_column_values_to_be_in_set', 'kwargs': {'value_set': [0, 1]}}], 'view': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 0, 'max_value': 4}}], 'condition': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 1, 'max_value': 5}}], 'grade': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 1, 'max_value': 13}}], 'yr_built': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 1900, 'max_value': 2020}}], 'yr_renovated': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 0, 'max_value': 2020}}], 'zipcode': [{'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'lat': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 47.0, 'max_value': 48.0}}], 'long': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': -123.0, 'max_value': -121.0}}]}
+2026-04-27 12:34:23 - PipelineLogger - INFO - Output path for processed data: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:34:23 - PipelineLogger - INFO - Schema of the processed Parquet file:
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - id: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - date: string
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - price: double
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - bedrooms: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - bathrooms: double
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - sqft_living: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - sqft_lot: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - floors: double
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - waterfront: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - view: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - condition: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - grade: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - sqft_above: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - sqft_basement: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - yr_built: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - yr_renovated: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - zipcode: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - lat: double
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - long: double
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - sqft_living15: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO -  - sqft_lot15: int64
+2026-04-27 12:34:23 - PipelineLogger - INFO - Loading the processed Parquet file into a pandas DataFrame...
+2026-04-27 12:34:23 - PipelineLogger - INFO - DataFrame loaded successfully with shape: (21613, 21)
+2026-04-27 12:34:23 - PipelineLogger - INFO - Performing quality checks based on the quality configuration...
+2026-04-27 12:34:26 - QualityReportSaver - INFO - Quality report saved to /home/wagner/MLOps/outputs/quality/quality_report_20260427_123426.json
+2026-04-27 12:34:26 - QualityReportSaver - INFO - Detailed quality report saved to /home/wagner/MLOps/outputs/quality/quality_report_20260427_123426.json
+2026-04-27 12:34:26 - PipelineLogger - WARNING - Quality checks failed. 2/22 checks failed. Report saved at: /home/wagner/MLOps/outputs/quality/quality_report_20260427_123426.json
+2026-04-27 12:34:26 - PipelineLogger - INFO - Quality report saved at: /home/wagner/MLOps/outputs/quality/quality_report_20260427_123426.json
+2026-04-27 12:43:23 - PipelineLogger - INFO - Kaggle credentials are valid. Proceeding with data ingestion.
+2026-04-27 12:43:23 - PipelineLogger - INFO - Dataset to be downloaded: harlfoxem/housesalesprediction
+2026-04-27 12:43:23 - PipelineLogger - INFO - Expected files: ['kc_house_data.csv']
+2026-04-27 12:43:23 - PipelineLogger - INFO - File pattern: *.csv
+2026-04-27 12:43:23 - PipelineLogger - INFO - Dataset: harlfoxem/housesalesprediction
+2026-04-27 12:43:23 - PipelineLogger - INFO - Downloading file 'kc_house_data.csv' from dataset 'harlfoxem/housesalesprediction'...
+2026-04-27 12:43:24 - PipelineLogger - INFO - ZIP encontrado: /home/wagner/MLOps/data/raw/kc_house_data.csv.zip
+2026-04-27 12:43:24 - PipelineLogger - INFO - Unzipping file '/home/wagner/MLOps/data/raw/kc_house_data.csv.zip' to '/home/wagner/MLOps/data/raw'...
+2026-04-27 12:43:24 - PipelineLogger - INFO - File '/home/wagner/MLOps/data/raw/kc_house_data.csv.zip' unzipped successfully.
+2026-04-27 12:43:24 - PipelineLogger - INFO - kc_house_data.csv (2456.3 KB)
+2026-04-27 12:43:24 - PipelineLogger - INFO - Output path for processed data: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:43:24 - PipelineLogger - INFO - Compression method for Parquet output: snappy
+2026-04-27 12:43:24 - PipelineLogger - INFO - Chunk size for processing: 100000
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validation enabled: True
+2026-04-27 12:43:24 - PipelineLogger - INFO - Required columns for validation: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:43:24 - PipelineLogger - INFO - Skip ingestion if output file exists: True
+2026-04-27 12:43:24 - PipelineLogger - INFO - Force ingestion even if output file exists: False
+2026-04-27 12:43:24 - PipelineLogger - INFO - Found 1 CSV files to ingest from '/home/wagner/MLOps/data/raw'.
+2026-04-27 12:43:24 - PipelineLogger - INFO - File Info: kc_house_data.csv (2.4 MB)
+2026-04-27 12:43:24 - PipelineLogger - INFO - Starting ingestion of CSV files to Parquet with compression='snappy', chunk_size=100000, validate_schema=True, required_columns=['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:43:24 - PipelineLogger - INFO - Processing file '/home/wagner/MLOps/data/raw/kc_house_data.csv'...
+2026-04-27 12:43:24 - PipelineLogger - INFO - Schema for file '/home/wagner/MLOps/data/raw/kc_house_data.csv': id: int64
+date: string
+price: double
+bedrooms: int64
+bathrooms: double
+sqft_living: int64
+sqft_lot: int64
+floors: double
+waterfront: int64
+view: int64
+condition: int64
+grade: int64
+sqft_above: int64
+sqft_basement: int64
+yr_built: int64
+yr_renovated: int64
+zipcode: int64
+lat: double
+long: double
+sqft_living15: int64
+sqft_lot15: int64
+2026-04-27 12:43:24 - PipelineLogger - INFO - Initialized Parquet writer with schema: id: int64
+date: string
+price: double
+bedrooms: int64
+bathrooms: double
+sqft_living: int64
+sqft_lot: int64
+floors: double
+waterfront: int64
+view: int64
+condition: int64
+grade: int64
+sqft_above: int64
+sqft_basement: int64
+yr_built: int64
+yr_renovated: int64
+zipcode: int64
+lat: double
+long: double
+sqft_living15: int64
+sqft_lot15: int64
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 856 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 861 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 857 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 861 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 862 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 862 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Read batch with 131 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:43:24 - PipelineLogger - INFO - Finished processing '/home/wagner/MLOps/data/raw/kc_house_data.csv'. Total rows so far: 21613
+2026-04-27 12:43:24 - PipelineLogger - INFO - Closing Parquet writer.
+2026-04-27 12:43:24 - PipelineLogger - INFO - Validating presence of required columns in output Parquet file '/home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet'...
+2026-04-27 12:43:24 - PipelineLogger - INFO - All 21 required columns are present in the output Parquet file: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:43:24 - PipelineLogger - INFO - Ingestion completed in 0.08 seconds. Input size is: 2.3986873626708984. Output size is: 1.15 MB. Compression ratio: 2.09
+2026-04-27 12:43:24 - PipelineLogger - INFO - Ingestion completed. Output file: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:49:18 - PipelineLogger - INFO - Kaggle credentials are valid. Proceeding with data ingestion.
+2026-04-27 12:49:18 - PipelineLogger - INFO - Dataset to be downloaded: harlfoxem/housesalesprediction
+2026-04-27 12:49:18 - PipelineLogger - INFO - Expected files: ['kc_house_data.csv']
+2026-04-27 12:49:18 - PipelineLogger - INFO - File pattern: *.csv
+2026-04-27 12:49:18 - PipelineLogger - INFO - Dataset: harlfoxem/housesalesprediction
+2026-04-27 12:49:18 - PipelineLogger - INFO - Downloading file 'kc_house_data.csv' from dataset 'harlfoxem/housesalesprediction'...
+2026-04-27 12:49:19 - PipelineLogger - INFO - ZIP encontrado: /home/wagner/MLOps/data/raw/kc_house_data.csv.zip
+2026-04-27 12:49:19 - PipelineLogger - INFO - Unzipping file '/home/wagner/MLOps/data/raw/kc_house_data.csv.zip' to '/home/wagner/MLOps/data/raw'...
+2026-04-27 12:49:19 - PipelineLogger - INFO - File '/home/wagner/MLOps/data/raw/kc_house_data.csv.zip' unzipped successfully.
+2026-04-27 12:49:19 - PipelineLogger - INFO - kc_house_data.csv (2456.3 KB)
+2026-04-27 12:49:19 - PipelineLogger - INFO - Output path for processed data: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:49:19 - PipelineLogger - INFO - Compression method for Parquet output: snappy
+2026-04-27 12:49:19 - PipelineLogger - INFO - Chunk size for processing: 100000
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validation enabled: True
+2026-04-27 12:49:19 - PipelineLogger - INFO - Required columns for validation: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:49:19 - PipelineLogger - INFO - Skip ingestion if output file exists: True
+2026-04-27 12:49:19 - PipelineLogger - INFO - Force ingestion even if output file exists: False
+2026-04-27 12:49:19 - PipelineLogger - INFO - Found 1 CSV files to ingest from '/home/wagner/MLOps/data/raw'.
+2026-04-27 12:49:19 - PipelineLogger - INFO - File Info: kc_house_data.csv (2.4 MB)
+2026-04-27 12:49:19 - PipelineLogger - INFO - Starting ingestion of CSV files to Parquet with compression='snappy', chunk_size=100000, validate_schema=True, required_columns=['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:49:19 - PipelineLogger - INFO - Processing file '/home/wagner/MLOps/data/raw/kc_house_data.csv'...
+2026-04-27 12:49:19 - PipelineLogger - INFO - Schema for file '/home/wagner/MLOps/data/raw/kc_house_data.csv': id: int64
+date: string
+price: double
+bedrooms: int64
+bathrooms: double
+sqft_living: int64
+sqft_lot: int64
+floors: double
+waterfront: int64
+view: int64
+condition: int64
+grade: int64
+sqft_above: int64
+sqft_basement: int64
+yr_built: int64
+yr_renovated: int64
+zipcode: int64
+lat: double
+long: double
+sqft_living15: int64
+sqft_lot15: int64
+2026-04-27 12:49:19 - PipelineLogger - INFO - Initialized Parquet writer with schema: id: int64
+date: string
+price: double
+bedrooms: int64
+bathrooms: double
+sqft_living: int64
+sqft_lot: int64
+floors: double
+waterfront: int64
+view: int64
+condition: int64
+grade: int64
+sqft_above: int64
+sqft_basement: int64
+yr_built: int64
+yr_renovated: int64
+zipcode: int64
+lat: double
+long: double
+sqft_living15: int64
+sqft_lot15: int64
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 856 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 861 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 857 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 861 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 862 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 862 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Read batch with 131 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:49:19 - PipelineLogger - INFO - Finished processing '/home/wagner/MLOps/data/raw/kc_house_data.csv'. Total rows so far: 21613
+2026-04-27 12:49:19 - PipelineLogger - INFO - Closing Parquet writer.
+2026-04-27 12:49:19 - PipelineLogger - INFO - Validating presence of required columns in output Parquet file '/home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet'...
+2026-04-27 12:49:19 - PipelineLogger - INFO - All 21 required columns are present in the output Parquet file: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:49:19 - PipelineLogger - INFO - Ingestion completed in 0.08 seconds. Input size is: 2.3986873626708984. Output size is: 1.15 MB. Compression ratio: 2.09
+2026-04-27 12:49:19 - PipelineLogger - INFO - Ingestion completed. Output file: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:51:31 - PipelineLogger - INFO - Kaggle credentials are valid. Proceeding with data ingestion.
+2026-04-27 12:51:31 - PipelineLogger - INFO - Dataset to be downloaded: harlfoxem/housesalesprediction
+2026-04-27 12:51:31 - PipelineLogger - INFO - Expected files: ['kc_house_data.csv']
+2026-04-27 12:51:31 - PipelineLogger - INFO - File pattern: *.csv
+2026-04-27 12:51:31 - PipelineLogger - INFO - Dataset: harlfoxem/housesalesprediction
+2026-04-27 12:51:32 - PipelineLogger - INFO - Downloading file 'kc_house_data.csv' from dataset 'harlfoxem/housesalesprediction'...
+2026-04-27 12:51:33 - PipelineLogger - INFO - ZIP encontrado: /home/wagner/MLOps/data/raw/kc_house_data.csv.zip
+2026-04-27 12:51:33 - PipelineLogger - INFO - Unzipping file '/home/wagner/MLOps/data/raw/kc_house_data.csv.zip' to '/home/wagner/MLOps/data/raw'...
+2026-04-27 12:51:33 - PipelineLogger - INFO - File '/home/wagner/MLOps/data/raw/kc_house_data.csv.zip' unzipped successfully.
+2026-04-27 12:51:33 - PipelineLogger - INFO - kc_house_data.csv (2456.3 KB)
+2026-04-27 12:51:33 - PipelineLogger - INFO - Output path for processed data: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:51:33 - PipelineLogger - INFO - Compression method for Parquet output: snappy
+2026-04-27 12:51:33 - PipelineLogger - INFO - Chunk size for processing: 100000
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validation enabled: True
+2026-04-27 12:51:33 - PipelineLogger - INFO - Required columns for validation: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:51:33 - PipelineLogger - INFO - Skip ingestion if output file exists: True
+2026-04-27 12:51:33 - PipelineLogger - INFO - Force ingestion even if output file exists: False
+2026-04-27 12:51:33 - PipelineLogger - INFO - Found 1 CSV files to ingest from '/home/wagner/MLOps/data/raw'.
+2026-04-27 12:51:33 - PipelineLogger - INFO - File Info: kc_house_data.csv (2.4 MB)
+2026-04-27 12:51:33 - PipelineLogger - INFO - Starting ingestion of CSV files to Parquet with compression='snappy', chunk_size=100000, validate_schema=True, required_columns=['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:51:33 - PipelineLogger - INFO - Processing file '/home/wagner/MLOps/data/raw/kc_house_data.csv'...
+2026-04-27 12:51:33 - PipelineLogger - INFO - Schema for file '/home/wagner/MLOps/data/raw/kc_house_data.csv': id: int64
+date: string
+price: double
+bedrooms: int64
+bathrooms: double
+sqft_living: int64
+sqft_lot: int64
+floors: double
+waterfront: int64
+view: int64
+condition: int64
+grade: int64
+sqft_above: int64
+sqft_basement: int64
+yr_built: int64
+yr_renovated: int64
+zipcode: int64
+lat: double
+long: double
+sqft_living15: int64
+sqft_lot15: int64
+2026-04-27 12:51:33 - PipelineLogger - INFO - Initialized Parquet writer with schema: id: int64
+date: string
+price: double
+bedrooms: int64
+bathrooms: double
+sqft_living: int64
+sqft_lot: int64
+floors: double
+waterfront: int64
+view: int64
+condition: int64
+grade: int64
+sqft_above: int64
+sqft_basement: int64
+yr_built: int64
+yr_renovated: int64
+zipcode: int64
+lat: double
+long: double
+sqft_living15: int64
+sqft_lot15: int64
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 856 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 861 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 857 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 860 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 861 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 858 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 859 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 862 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 862 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Read batch with 131 rows from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating required columns in batch from '/home/wagner/MLOps/data/raw/kc_house_data.csv'
+2026-04-27 12:51:33 - PipelineLogger - INFO - Finished processing '/home/wagner/MLOps/data/raw/kc_house_data.csv'. Total rows so far: 21613
+2026-04-27 12:51:33 - PipelineLogger - INFO - Closing Parquet writer.
+2026-04-27 12:51:33 - PipelineLogger - INFO - Validating presence of required columns in output Parquet file '/home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet'...
+2026-04-27 12:51:33 - PipelineLogger - INFO - All 21 required columns are present in the output Parquet file: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
+2026-04-27 12:51:33 - PipelineLogger - INFO - Ingestion completed in 0.07 seconds. Input size is: 2.3986873626708984. Output size is: 1.15 MB. Compression ratio: 2.09
+2026-04-27 12:51:33 - PipelineLogger - INFO - Ingestion completed. Output file: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:54:07 - PipelineLogger - INFO - Logger configured successfully for quality checks.
+2026-04-27 12:54:07 - PipelineLogger - INFO - Starting quality checks with the following configuration:
+2026-04-27 12:54:07 - PipelineLogger - INFO - pipeline: {'name': 'kingcounty-price-data-pipeline', 'version': '1.0.0', 'description': 'Pipeline completo para ingestão, preprocessamento, qualidade e modelagem do dataset King County House Prices'}
+2026-04-27 12:54:07 - PipelineLogger - INFO - paths: {'raw_data_dir': 'data/raw/', 'processed_data_dir': 'data/processed/', 'features_data_dir': 'data/features/', 'output_filename': 'kingcountry_price_predictions.parquet', 'features_filename': 'kingcounty_features.parquet'}
+2026-04-27 12:54:07 - PipelineLogger - INFO - execution: {'skip_existing': True, 'skip_ingest_if_exists': True, 'force_download': False, 'force_ingest': False}
+2026-04-27 12:54:07 - PipelineLogger - INFO - logging: {'name': 'PipelineLogger', 'level': 'INFO', 'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s', 'datefmt': '%Y-%m-%d %H:%M:%S', 'log_to_file': True, 'log_dir': 'logs', 'log_file': 'pipeline.log'}
+2026-04-27 12:54:07 - PipelineLogger - INFO - kaggle: {'dataset': 'harlfoxem/housesalesprediction', 'file_pattern': '*.csv', 'expected_files': ['kc_house_data.csv'], 'expected_count': None}
+2026-04-27 12:54:07 - PipelineLogger - INFO - ingest: {'output_format': 'parquet', 'compression': 'snappy', 'chunk_size_rows': 50000, 'convert_dtypes': True, 'validate_schema': True}
+2026-04-27 12:54:07 - PipelineLogger - INFO - schema: {'required_columns': ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']}
+2026-04-27 12:54:07 - PipelineLogger - INFO - feature_selection: {'target': 'price'}
+2026-04-27 12:54:07 - PipelineLogger - INFO - quality: {'suite_name': 'kingcounty-data-quality-suite', 'fail_pipeline_on_failure': False, 'output_dir': 'data/quality/'}
+2026-04-27 12:54:07 - PipelineLogger - INFO - table_expectations: [{'type': 'expect_table_row_count_to_be_between', 'kwargs': {'min_value': 21000, 'max_value': 22000}}, {'type': 'expect_table_columns_to_match_set', 'kwargs': {'column_set': ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15'], 'exact_match': True}}]
+2026-04-27 12:54:07 - PipelineLogger - INFO - column_expectations: {'price': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 50000, 'max_value': 8000000}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'bedrooms': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 0, 'max_value': 10}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'bathrooms': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 0, 'max_value': 8}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'sqft_living': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 200, 'max_value': 15000}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'sqft_lot': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 400, 'max_value': 1000000}}, {'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'floors': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 1, 'max_value': 4}}], 'waterfront': [{'type': 'expect_column_values_to_be_in_set', 'kwargs': {'value_set': [0, 1]}}], 'view': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 0, 'max_value': 4}}], 'condition': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 1, 'max_value': 5}}], 'grade': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 1, 'max_value': 13}}], 'yr_built': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 1900, 'max_value': 2020}}], 'yr_renovated': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 0, 'max_value': 2020}}], 'zipcode': [{'type': 'expect_column_values_to_not_be_null', 'kwargs': {'mostly': 0.999}}], 'lat': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': 47.0, 'max_value': 48.0}}], 'long': [{'type': 'expect_column_values_to_be_between', 'kwargs': {'min_value': -123.0, 'max_value': -121.0}}]}
+2026-04-27 12:54:07 - PipelineLogger - INFO - Output path for processed data: /home/wagner/MLOps/data/processed/kingcountry_price_predictions.parquet
+2026-04-27 12:54:07 - PipelineLogger - INFO - Schema of the processed Parquet file:
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - id: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - date: string
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - price: double
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - bedrooms: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - bathrooms: double
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - sqft_living: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - sqft_lot: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - floors: double
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - waterfront: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - view: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - condition: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - grade: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - sqft_above: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - sqft_basement: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - yr_built: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - yr_renovated: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - zipcode: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - lat: double
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - long: double
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - sqft_living15: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO -  - sqft_lot15: int64
+2026-04-27 12:54:07 - PipelineLogger - INFO - Loading the processed Parquet file into a pandas DataFrame...
+2026-04-27 12:54:07 - PipelineLogger - INFO - DataFrame loaded successfully with shape: (21613, 21)
+2026-04-27 12:54:07 - PipelineLogger - INFO - Performing quality checks based on the quality configuration...
+2026-04-27 12:54:09 - QualityReportSaver - INFO - Quality report saved to /home/wagner/MLOps/outputs/quality/quality_report_20260427_125409.json
+2026-04-27 12:54:09 - QualityReportSaver - INFO - Detailed quality report saved to /home/wagner/MLOps/outputs/quality/quality_report_20260427_125409.json
+2026-04-27 12:54:09 - PipelineLogger - WARNING - Quality checks failed. 2/22 checks failed. Report saved at: /home/wagner/MLOps/outputs/quality/quality_report_20260427_125409.json
+2026-04-27 12:54:09 - PipelineLogger - INFO - Quality report saved at: /home/wagner/MLOps/outputs/quality/quality_report_20260427_125409.json

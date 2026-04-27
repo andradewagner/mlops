@@ -334,9 +334,7 @@ class FeatureSelector(BaseEstimator, TransformerMixin):
     
     def transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         missing = [f for f in self.features if f not in X.columns]
-        self.logger.warning(f"FeatureSelector: colunas ausentes {missing} - seleçao falhou.")
         if missing:
-            # raise KeyError(f"FeatureSelector: colunas ausentes {missing} - seleçao falhou.")
-            return X
+            raise KeyError(f"FeatureSelector: colunas ausentes {missing} - seleçao falhou.")
         self._log("FeatureSelector: selecionando features %s", self.features)
         return X[self.features].copy()
